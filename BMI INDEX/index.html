@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Index</title>
+
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+<body>
+<div class="card">
+    <div class="card-body"
+        <span>Tinggi Badan (cm)</span>
+        <input type="number" id="tinggi">
+        <br>
+
+        <span>Berat Badan (kg)</span>
+        <input type="number" id="berat">
+        
+        <br>
+        <button id="btn-bmi">Hitung</button>
+        <br>
+        <br>
+        <span id="hasil">0</span>
+        <div id="status"></div>
+    </div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.getElementById('btn-bmi').addEventListener('click', function(){
+            var tinggi = parseInt(document.getElementById('tinggi').value);
+            var berat = parseInt(document.getElementById('berat').value);
+            var hasil = (berat / (tinggi * tinggi) * 10000);
+            hasil = hasil.toFixed(2);
+            document.getElementById('hasil').innerHTML = hasil;
+            var bmi = hasil; 
+            if (bmi < 18.5) {
+                document.getElementById('status').innerHTML = "Kurus";
+            } else if (bmi < 25) {
+                document.getElementById('status').innerHTML = "Normal";
+            } else if (bmi < 30) {
+                document.getElementById('status').innerHTML = "Kelebihan";
+            } else {
+                document.getElementById('status').innerHTML = "Obesitas";
+            }
+    });
+});
+
+
+    </script>
+</body>
+</html>
